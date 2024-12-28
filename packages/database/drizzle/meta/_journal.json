@@ -8,6 +8,13 @@
       "when": 1735413123496,
       "tag": "0000_public_the_professor",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1735414021777,
+      "tag": "0001_steady_nick_fury",
+      "breakpoints": true
     }
   ]
 }
