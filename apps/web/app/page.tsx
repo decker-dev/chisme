@@ -1,5 +1,5 @@
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@drk/ui/components/button";
+import { Button } from "@dkr/ui/components/button";
 
 export default function Page() {
   return (

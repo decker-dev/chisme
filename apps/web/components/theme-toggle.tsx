@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@drk/ui/components/button";
+import { Button } from "@dkr/ui/components/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
