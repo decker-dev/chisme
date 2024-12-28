@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_local_chisme
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: chisme
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
