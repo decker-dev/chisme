@@ -14,20 +14,25 @@
   "dependencies": {
     "@dkr/analytics": "workspace:*",
     "@dkr/ui": "workspace:*",
-    "@dkr/database": "workspace:*",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.3",
     "lucide-react": "0.456.0",
     "next": "^15.1.3",
     "next-safe-action": "^7.10.2",
     "next-themes": "^0.4.3",
+    "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pg": "^8.11.10",
     "@types/react": "19.0.0",
     "@types/react-dom": "19.0.0",
-    "typescript": "^5.5.4",
+    "drizzle-kit": "^0.30.1",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.4"
   }
 }
