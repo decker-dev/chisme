@@ -1,10 +1,7 @@
 import { CreateTemporaryRoom } from "@/app/_components/create-temporary-room";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { getRooms } from "@/lib/get-rooms";
 
 export default async function Page() {
-  const rooms = await getRooms();
-  console.log(rooms);
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted px-4">
       <ThemeToggle />
