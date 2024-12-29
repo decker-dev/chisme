@@ -1,10 +1,13 @@
 import { MessageForm } from "@/app/room/[roomId]/_components/message-form";
 import { getMessages } from "@/app/room/[roomId]/_lib/get-messages";
 import { ScrollArea } from "@dkr/ui/components/scroll-area";
-
-export default async function RoomPage({
-  params,
-}: { params: { roomId: string } }) {
+interface RoomPageProps {
+  params: Promise<{
+    roomId: string;
+  }>;
+}
+export default async function RoomPage(props: RoomPageProps) {
+  const params = await props.params;
   const messages = await getMessages(params.roomId);
 
   return (
