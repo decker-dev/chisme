@@ -1,11 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env"],
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "env": ["DATABASE_URL"],
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "dependsOn": ["^db:generate", "^build"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
