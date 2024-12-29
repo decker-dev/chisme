@@ -1,5 +1,5 @@
+import { CreateTemporaryRoom } from "@/app/_components/create-temporary-room";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@dkr/ui/components/button";
 
 export default function Page() {
   return (
@@ -16,9 +16,7 @@ export default function Page() {
         </p>
 
         <div className="flex justify-center">
-          <Button size="lg" className="text-lg px-8 py-6 rounded-full">
-            Crear sala temporal
-          </Button>
+          <CreateTemporaryRoom />
         </div>
       </div>
     </main>
