@@ -13,6 +13,9 @@ export const rooms = pgTable("rooms", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
   expiresAt: timestamp("expires_at").notNull(),
 });
+export type Room = typeof rooms.$inferSelect;
+
+export type InsertRoom = typeof rooms.$inferInsert;
 
 export const messages = pgTable("messages", {
   id: serial("id").primaryKey(),
