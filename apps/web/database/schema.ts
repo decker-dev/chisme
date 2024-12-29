@@ -23,3 +23,7 @@ export const messages = pgTable("messages", {
   content: varchar("content").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export type Message = typeof messages.$inferSelect;
+
+export type InsertMessage = typeof messages.$inferInsert;

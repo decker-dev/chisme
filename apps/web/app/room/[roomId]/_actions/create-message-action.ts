@@ -1,6 +1,7 @@
 "use server";
 
-import type { Message } from "@/app/room/[roomId]/_lib/get-messages";
+import { createMessage } from "@/database/queries/message";
+import type { Message } from "@/database/schema";
 import { revalidatePath } from "next/cache";
 
 const anonymousNames = [
@@ -24,25 +25,15 @@ function getRandomAnonymousName(): string {
   );
 }
 
-export async function createMessage(
+export async function createMessageAction(
   roomId: string,
   content: string,
 ): Promise<Message> {
-  // Simular una demora en la red
-  await new Promise((resolve) => setTimeout(resolve, 500));
-
-  const newMessage: Message = {
-    id: Date.now(),
-    content,
-    timestamp: new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
-    author: getRandomAnonymousName(),
-  };
-
-  // En una implementación real, aquí se guardaría el mensaje en una base de datos
-
+  const newMessage = await createMessage({
+    roomId: roomId,
+    username: getRandomAnonymousName(),
+    content: content,
+  });
   revalidatePath(`/room/${roomId}`);
   return newMessage;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { createMessage } from "@/app/room/[roomId]/_actions/create-message-action";
+import { createMessageAction } from "@/app/room/[roomId]/_actions/create-message-action";
 import { Button } from "@dkr/ui/components/button";
 import { Textarea } from "@dkr/ui/components/textarea";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ export function MessageForm({ roomId }: { roomId: string }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newMessage.trim()) {
-      await createMessage(roomId, newMessage.trim());
+      await createMessageAction(roomId, newMessage.trim());
       setNewMessage("");
       setCharCount(0);
       router.refresh();
