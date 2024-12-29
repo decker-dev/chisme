@@ -4,8 +4,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export default async function Page() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-muted px-4">
-      <ThemeToggle />
-
+      <ThemeToggle isFixed />
       <div className="max-w-3xl mx-auto text-center space-y-12">
         <h1 className="text-6xl font-bold tracking-tighter sm:text-7xl">
           chisme.dev
