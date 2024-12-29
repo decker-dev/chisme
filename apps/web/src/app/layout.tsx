@@ -2,7 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "@dkr/ui/styles/globals.css";
 import { Providers } from "@/components/providers";
+import { Provider as AnalyticsProvider } from "@dkr/analytics/client";
 import type { ReactNode } from "react";
+import { Toaster } from "sonner";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -20,12 +22,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
+    <html lang="es" suppressHydrationWarning>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
         <Providers>{children}</Providers>
+        <AnalyticsProvider />
+        <Toaster richColors />
       </body>
     </html>
   );
