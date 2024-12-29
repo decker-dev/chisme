@@ -5,18 +5,18 @@ import type { Message } from "@/database/schema";
 import { revalidatePath } from "next/cache";
 
 const anonymousNames = [
-  "Murciélago Anónimo",
-  "Kiwi Anónimo",
-  "Panda Anónimo",
-  "Koala Anónimo",
-  "Pingüino Anónimo",
-  "Canguro Anónimo",
-  "Delfín Anónimo",
-  "Tucán Anónimo",
+  "Murciélago",
+  "Kiwi",
+  "Panda",
+  "Koala",
+  "Pingüino",
+  "Canguro",
+  "Delfín",
+  "Tucán",
   "Jirafa Anónima",
-  "Leopardo Anónimo",
-  "Tigre Anónimo",
-  "Elefante Anónimo",
+  "Leopardo",
+  "Tigre",
+  "Elefante",
 ];
 
 function getRandomAnonymousName(): string {

@@ -12,11 +12,11 @@
     "db:generate": "dotenv drizzle-kit generate",
     "db:introspect": "dotenv drizzle-kit introspect",
     "db:push": "dotenv drizzle-kit push",
-    "db:migrate": "dotenv tsx database/migrate.ts",
+    "db:migrate": "dotenv tsx src/database/migrate.ts",
     "db:drop-migration": "drizzle-kit drop",
-    "db:seed": "dotenv tsx database/seed/demo.ts",
-    "db:seed:fractal": "dotenv tsx database/seed/fractal.ts",
-    "db:clean": "dotenv tsx database/clean.ts",
+    "db:seed": "dotenv tsx src/database/seed/demo.ts",
+    "db:seed:fractal": "dotenv tsx src/database/seed/fractal.ts",
+    "db:clean": "dotenv tsx src/database/clean.ts",
     "db:studio": "dotenv drizzle-kit studio"
   },
   "dependencies": {

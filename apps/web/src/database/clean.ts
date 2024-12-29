@@ -1,4 +1,4 @@
-import { db } from "@/database";
+import { db } from "@/database/index";
 import { messages, rooms } from "@/database/schema";
 
 export async function cleanAll() {
