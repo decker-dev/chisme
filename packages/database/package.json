@@ -1,12 +1,13 @@
 {
   "name": "@dkr/database",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "publishConfig": {
     "access": "public"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./queries": "./src/queries.ts"
   },
   "scripts": {
     "db:seed": "tsx scripts/seed.ts",
