@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "@dkr/ui/styles/globals.css";
 import { Providers } from "@/components/providers";
+import type { ReactNode } from "react";
 
 const fontSans = Geist({
   subsets: ["latin"],
@@ -16,7 +17,7 @@ const fontMono = Geist_Mono({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>

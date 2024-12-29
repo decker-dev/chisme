@@ -1,5 +1,5 @@
-import { CreateTemporaryRoom } from "@/app/_components/create-temporary-room";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { CreateTemporaryRoom } from "@/modules/room/components/create-temporary-room";
 
 export default async function Page() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { createRoomAction } from "@/app/_actions/create-room-action";
+import { createRoomAction } from "@/modules/room/actions/create-room-action";
 import { Button } from "@dkr/ui/components/button";
 
 export function CreateTemporaryRoom() {
