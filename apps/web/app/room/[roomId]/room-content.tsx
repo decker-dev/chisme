@@ -1,94 +1,28 @@
 "use client";
 
+import type { Message } from "@/app/room/[roomId]/_lib/get-messages";
+import { createMessage } from "@/app/room/_actions/create-message-action";
 import { Button } from "@dkr/ui/components/button";
 import { ScrollArea } from "@dkr/ui/components/scroll-area";
 import { Textarea } from "@dkr/ui/components/textarea";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-interface Message {
-  id: number;
-  content: string;
-  timestamp: string;
-  author: string;
-}
-
-const anonymousNames = [
-  "Murciélago Anónimo",
-  "Kiwi Anónimo",
-  "Panda Anónimo",
-  "Koala Anónimo",
-  "Pingüino Anónimo",
-  "Canguro Anónimo",
-  "Delfín Anónimo",
-  "Tucán Anónimo",
-  "Jirafa Anónima",
-  "Leopardo Anónimo",
-  "Tigre Anónimo",
-  "Elefante Anónimo",
-];
-
-function getRandomAnonymousName() {
-  return anonymousNames[Math.floor(Math.random() * anonymousNames.length)];
-}
-
-const mockMessages: Message[] = [
-  {
-    id: 1,
-    content: "¡Hola a todos! ¿Qué tal el día?",
-    timestamp: "10:30 AM",
-    author: "Murciélago Anónimo",
-  },
-  {
-    id: 2,
-    content: "¿Alguien sabe qué pasó con María?",
-    timestamp: "10:32 AM",
-    author: "Kiwi Anónimo",
-  },
-  {
-    id: 3,
-    content: "Escuché que se mudó a otra ciudad",
-    timestamp: "10:35 AM",
-    author: "Panda Anónimo",
-  },
-  {
-    id: 4,
-    content: "¿En serio? No sabía nada",
-    timestamp: "10:37 AM",
-    author: "Koala Anónimo",
-  },
-  {
-    id: 5,
-    content: "Sí, al parecer consiguió un nuevo trabajo",
-    timestamp: "10:40 AM",
-    author: "Pingüino Anónimo",
-  },
-];
-
-export function RoomContent({ roomId }: { roomId: string }) {
-  const [messages, setMessages] = useState<Message[]>(mockMessages);
+export function RoomContent({
+  roomId,
+  initialMessages,
+}: { roomId: string; initialMessages: Message[] }) {
   const [newMessage, setNewMessage] = useState("");
   const [charCount, setCharCount] = useState(0);
-  const [currentUser, setCurrentUser] = useState("");
+  const router = useRouter();
 
-  useEffect(() => {
-    setCurrentUser(getRandomAnonymousName());
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newMessage.trim()) {
-      const message: Message = {
-        id: messages.length + 1,
-        content: newMessage.trim(),
-        timestamp: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        author: currentUser,
-      };
-      setMessages([...messages, message]);
+      await createMessage(roomId, newMessage.trim());
       setNewMessage("");
       setCharCount(0);
+      router.refresh();
     }
   };
 
@@ -111,10 +45,7 @@ export function RoomContent({ roomId }: { roomId: string }) {
             {charCount}/280
           </span>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-muted-foreground">
-            Publicando como: {currentUser}
-          </span>
+        <div className="flex justify-end">
           <Button type="submit" disabled={newMessage.trim().length === 0}>
             Enviar
           </Button>
@@ -122,7 +53,7 @@ export function RoomContent({ roomId }: { roomId: string }) {
       </form>
 
       <ScrollArea className="h-[400px] border rounded-md p-4">
-        {messages.map((message) => (
+        {initialMessages.map((message) => (
           <div key={message.id} className="mb-4 p-4 bg-muted rounded-lg">
             <div className="flex justify-between items-center mb-2">
               <span className="font-semibold">{message.author}</span>
