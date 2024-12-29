@@ -22,7 +22,11 @@ export function MessageForm({ roomId }: { roomId: string }) {
   });
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    createMessage.execute({ roomId, content: newMessage });
+    if (newMessage.trim()) {
+      createMessage.execute({ roomId, content: newMessage });
+      setNewMessage("");
+      setCharCount(0);
+    }
   };
 
   return (
