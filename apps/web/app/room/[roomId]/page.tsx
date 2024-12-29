@@ -1,4 +1,5 @@
 import { getMessages } from "@/app/room/[roomId]/_lib/get-messages";
+import { ScrollArea } from "@dkr/ui/components/scroll-area";
 import { RoomContent } from "./room-content";
 
 export default async function RoomPage({
@@ -11,7 +12,22 @@ export default async function RoomPage({
       <h1 className="text-3xl font-bold mb-6 text-center">
         Sala: {params.roomId}
       </h1>
-      <RoomContent roomId={params.roomId} initialMessages={messages} />
+      <div className="space-y-4">
+        <RoomContent roomId={params.roomId} />
+        <ScrollArea className="h-[400px] border rounded-md p-4">
+          {messages.map((message) => (
+            <div key={message.id} className="mb-4 p-4 bg-muted rounded-lg">
+              <div className="flex justify-between items-center mb-2">
+                <span className="font-semibold">{message.author}</span>
+                <span className="text-sm text-muted-foreground">
+                  {message.timestamp}
+                </span>
+              </div>
+              <p>{message.content}</p>
+            </div>
+          ))}
+        </ScrollArea>
+      </div>
     </div>
   );
 }
