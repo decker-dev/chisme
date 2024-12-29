@@ -6,7 +6,7 @@ import { Textarea } from "@dkr/ui/components/textarea";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function RoomContent({ roomId }: { roomId: string }) {
+export function MessageForm({ roomId }: { roomId: string }) {
   const [newMessage, setNewMessage] = useState("");
   const [charCount, setCharCount] = useState(0);
   const router = useRouter();
