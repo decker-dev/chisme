@@ -1,19 +1,26 @@
 "use server";
 
 import { createMessage } from "@/database/queries/message";
-import type { Message } from "@/database/schema";
+import { authActionClient } from "@/lib/safe-action";
+import { createMessageSchema } from "@/modules/message/actions/schema";
 import { getRandomAnonymousName } from "@/modules/message/lib/utils";
 import { revalidatePath } from "next/cache";
 
-export async function createMessageAction(
-  roomId: string,
-  content: string,
-): Promise<Message> {
-  const newMessage = await createMessage({
-    roomId: roomId,
-    username: getRandomAnonymousName(),
-    content: content,
+export const createMessageAction = authActionClient
+  .schema(createMessageSchema)
+  .metadata({
+    name: "create room",
+    track: {
+      event: "room_created",
+      channel: "landing",
+    },
+  })
+  .action(async ({ parsedInput: { roomId, content } }) => {
+    const newMessage = await createMessage({
+      roomId: roomId,
+      username: getRandomAnonymousName(),
+      content: content,
+    });
+    revalidatePath(`/room/${roomId}`);
+    return newMessage;
   });
-  revalidatePath(`/room/${roomId}`);
-  return newMessage;
-}
