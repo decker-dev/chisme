@@ -1,19 +1,12 @@
 {
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "entries": [
     {
       "idx": 0,
-      "version": "5",
-      "when": 1735413123496,
-      "tag": "0000_public_the_professor",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1735414021777,
-      "tag": "0001_steady_nick_fury",
+      "version": "7",
+      "when": 1735487386272,
+      "tag": "0000_whole_jetstream",
       "breakpoints": true
     }
   ]

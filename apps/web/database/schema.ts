@@ -2,13 +2,15 @@ import {
   integer,
   pgTable,
   primaryKey,
-  serial,
+  text,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
 
 export const rooms = pgTable("rooms", {
-  id: serial("id").primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   name: varchar("name").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   expiresAt: timestamp("expires_at").notNull(),
@@ -18,7 +20,9 @@ export type Room = typeof rooms.$inferSelect;
 export type InsertRoom = typeof rooms.$inferInsert;
 
 export const messages = pgTable("messages", {
-  id: serial("id").primaryKey(),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
   roomId: integer("room_id")
     .references(() => rooms.id)
     .notNull(),

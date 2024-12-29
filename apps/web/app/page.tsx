@@ -10,9 +10,13 @@ export default async function Page() {
       <ThemeToggle />
 
       <div className="max-w-3xl mx-auto text-center space-y-12">
-        <h1 className="text-6xl font-bold tracking-tighter sm:text-7xl"></h1>
+        <h1 className="text-6xl font-bold tracking-tighter sm:text-7xl">
+          test
+        </h1>
 
-        <p className="text-xl text-muted-foreground max-w-[42rem] leading-normal sm:text-2xl sm:leading-normal"></p>
+        <p className="text-xl text-muted-foreground max-w-[42rem] leading-normal sm:text-2xl sm:leading-normal">
+          TEST
+        </p>
 
         <div className="flex justify-center">
           <CreateTemporaryRoom />

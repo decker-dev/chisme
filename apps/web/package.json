@@ -1,7 +1,6 @@
 {
   "name": "@dkr/web",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 3001",
@@ -9,7 +8,16 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "lint": "biome lint",
     "format": "biome format --write .",
-    "start": "next start"
+    "start": "next start",
+    "db:generate": "dotenv drizzle-kit generate",
+    "db:introspect": "dotenv drizzle-kit introspect",
+    "db:push": "dotenv drizzle-kit push",
+    "db:migrate": "dotenv tsx database/migrate.ts",
+    "db:drop-migration": "drizzle-kit drop",
+    "db:seed": "dotenv tsx database/seed/demo.ts",
+    "db:seed:fractal": "dotenv tsx database/seed/fractal.ts",
+    "db:clean": "dotenv tsx database/clean.ts",
+    "db:studio": "dotenv drizzle-kit studio"
   },
   "dependencies": {
     "@dkr/analytics": "workspace:*",
@@ -33,6 +41,7 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "tsx": "^4.19.2",
+    "dotenv-cli": "^7.4.2",
     "typescript": "^5.5.4"
   }
 }
