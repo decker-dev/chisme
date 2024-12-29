@@ -1,6 +1,6 @@
 "use client";
 
-import { createMessageAction } from "@/app/room/[roomId]/_actions/create-message-action";
+import { createMessageAction } from "@/modules/message/actions/create-message-action";
 import { Button } from "@dkr/ui/components/button";
 import { Textarea } from "@dkr/ui/components/textarea";
 import { useRouter } from "next/navigation";

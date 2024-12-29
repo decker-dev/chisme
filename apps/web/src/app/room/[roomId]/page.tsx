@@ -1,6 +1,6 @@
-import { MessageForm } from "@/app/room/[roomId]/_components/message-form";
-import { getMessages } from "@/app/room/[roomId]/_lib/get-messages";
 import { Header } from "@/components/header";
+import { MessageForm } from "@/modules/message/components/message-form";
+import { getMessages } from "@/modules/message/lib/get-messages";
 import { ScrollArea } from "@dkr/ui/components/scroll-area";
 interface RoomPageProps {
   params: Promise<{
