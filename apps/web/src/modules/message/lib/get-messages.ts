@@ -1,11 +1,5 @@
 import { readMessages } from "@/database/queries/message";
-
-export interface Message {
-  id: string;
-  content: string;
-  timestamp: string;
-  author: string;
-}
+import type { Message } from "@/modules/message/lib/types";
 
 export async function getMessages(roomId: string): Promise<Message[]> {
   const messages = await readMessages(roomId);
