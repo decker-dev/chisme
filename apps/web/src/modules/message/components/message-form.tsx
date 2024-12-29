@@ -1,24 +1,28 @@
 "use client";
 
+import { useActionStatus } from "@/hooks/use-action-toast";
 import { createMessageAction } from "@/modules/message/actions/create-message-action";
 import { Button } from "@dkr/ui/components/button";
 import { Textarea } from "@dkr/ui/components/textarea";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useAction } from "next-safe-action/hooks";
+import { type FormEvent, useState } from "react";
 
 export function MessageForm({ roomId }: { roomId: string }) {
   const [newMessage, setNewMessage] = useState("");
   const [charCount, setCharCount] = useState(0);
-  const router = useRouter();
+  const createMessage = useAction(createMessageAction);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useActionStatus({
+    isExecuting: createMessage.isExecuting,
+    hasErrored: createMessage.hasErrored,
+    hasSucceeded: createMessage.hasSucceeded,
+    successMessage: "Mensaje enviado",
+    errorMessage: "Error enviando el mensaje",
+    loadingMessage: "Enviando mensaje",
+  });
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (newMessage.trim()) {
-      await createMessageAction(roomId, newMessage.trim());
-      setNewMessage("");
-      setCharCount(0);
-      router.refresh();
-    }
+    createMessage.execute({ roomId, content: newMessage });
   };
 
   return (
