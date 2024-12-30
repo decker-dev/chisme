@@ -12,7 +12,7 @@ export function Header() {
       <div className="flex items-center space-x-2">
         <Button variant="ghost" size="icon" asChild>
           <Link
-            href="https://github.com/yourusername/chisme-dev"
+            href="https://github.com/decker-dev/chisme"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -15,6 +15,13 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 });
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "chisme",
+  description:
+    "Cree una sala temporal de 24 horas y publica tus mejores chismes.",
+};
 
 export default function RootLayout({
   children,
