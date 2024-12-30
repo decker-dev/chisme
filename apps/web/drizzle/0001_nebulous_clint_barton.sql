@@ -1,0 +1,1 @@
+ALTER TABLE "messages" ADD COLUMN "username_color" varchar NOT NULL;

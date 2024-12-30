@@ -11,5 +11,6 @@ export async function getMessages(roomId: string): Promise<Message[]> {
       minute: "2-digit",
     }),
     author: message.username,
+    authorColor: message.usernameColor,
   }));
 }

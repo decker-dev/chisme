@@ -3,7 +3,10 @@
 import { createMessage } from "@/database/queries/message";
 import { authActionClient } from "@/lib/safe-action";
 import { createMessageSchema } from "@/modules/message/actions/schema";
-import { getRandomAnonymousName } from "@/modules/message/lib/utils";
+import {
+  getRandomAnonymousName,
+  getRandomColor,
+} from "@/modules/message/lib/utils";
 import { revalidatePath } from "next/cache";
 
 export const createMessageAction = authActionClient
@@ -19,6 +22,7 @@ export const createMessageAction = authActionClient
     const newMessage = await createMessage({
       roomId: roomId,
       username: getRandomAnonymousName(),
+      usernameColor: getRandomColor(),
       content: content,
     });
     revalidatePath(`/room/${roomId}`);

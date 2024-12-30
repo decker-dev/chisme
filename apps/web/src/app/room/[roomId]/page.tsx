@@ -22,7 +22,12 @@ export default async function RoomPage(props: RoomPageProps) {
             {messages.map((message) => (
               <div key={message.id} className="mb-4 p-4 bg-muted rounded-lg">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-semibold">{message.author}</span>
+                  <span
+                    className="font-semibold"
+                    style={{ color: message.authorColor }}
+                  >
+                    {message.author}
+                  </span>
                   <span className="text-sm text-muted-foreground">
                     {message.timestamp}
                   </span>

@@ -20,6 +20,7 @@ export const messages = pgTable("messages", {
     .references(() => rooms.id)
     .notNull(),
   username: varchar("username").notNull(),
+  usernameColor: varchar("username_color").notNull(),
   content: varchar("content").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

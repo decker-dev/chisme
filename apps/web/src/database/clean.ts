@@ -4,8 +4,8 @@ import { messages, rooms } from "@/database/schema";
 export async function cleanAll() {
   try {
     console.log("⏳ Deleting old data...");
-    await db.delete(rooms);
     await db.delete(messages);
+    await db.delete(rooms);
   } catch (err) {
     console.error("❌ Seeding failed:", err);
   }

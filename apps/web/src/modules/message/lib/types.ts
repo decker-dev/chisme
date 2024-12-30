@@ -3,4 +3,5 @@ export interface Message {
   content: string;
   timestamp: string;
   author: string;
+  authorColor: string;
 }

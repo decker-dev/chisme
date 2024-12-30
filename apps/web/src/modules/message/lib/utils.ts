@@ -18,3 +18,18 @@ export function getRandomAnonymousName(): string {
     anonymousNames[Math.floor(Math.random() * anonymousNames.length)] || ""
   );
 }
+export function getRandomColor(): string {
+  const colors = [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple",
+    "pink",
+    "orange",
+    "teal",
+    "indigo",
+    "cyan",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)] || "purple";
+}
