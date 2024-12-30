@@ -7,7 +7,7 @@ const anonymousNames = [
   "Canguro",
   "Delfín",
   "Tucán",
-  "Jirafa Anónima",
+  "Jirafa",
   "Leopardo",
   "Tigre",
   "Elefante",
